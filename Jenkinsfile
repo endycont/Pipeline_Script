@@ -18,8 +18,7 @@ pipeline {
                 archiveArtifacts '**/*.war'
             }
         }
-		}
-	
+			
 	stage('job3') {
 				agent {
 					label "deploy"
@@ -29,7 +28,7 @@ pipeline {
            deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
 				}
 			}
-		}
+		
 			
 	stage('job2'){
 		agent {
