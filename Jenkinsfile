@@ -1,8 +1,7 @@
-import hudson.EnvVars
-import hudson.model.Environment
-def result2 = manager.build.result
+//import hudson.EnvVars
+//import hudson.model.Environment
+//def result2 = manager.build.result
 pipeline {
-    agent any
     tools {
         maven 'LocalMaven' 
         jdk 'LocalJDK8'
