@@ -18,6 +18,16 @@ pipeline {
                 archiveArtifacts '**/*.war'
             }
         }
+	stage('job3') {
+				agent {
+					label "deploy"
+				}
+				steps {
+					 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '$JOB_NAME', selector: lastSuccessful()
+           deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
+				}
+			}
+		}
 			
 	stage('job2'){
 		agent {
@@ -32,16 +42,7 @@ pipeline {
             } 
         }		
 
-			stage('job3') {
-				agent {
-					label "deploy"
-				}
-				steps {
-					 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '$JOB_NAME', selector: lastSuccessful()
-           deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
-				}
-			}
-		}
+			
 }
 
 		
