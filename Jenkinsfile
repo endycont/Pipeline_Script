@@ -16,7 +16,7 @@ pipeline {
             parallel {
                 stage('Test On Windows') {
                    agent {
-                        label "Mock"
+                        label "mock"
                     }
                     steps {
                         echo "Task1 on Parallel"
