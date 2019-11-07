@@ -7,7 +7,8 @@ pipeline {
         maven 'LocalMaven' 
         jdk 'LocalJDK8'
     }
-		stages {
+    stages {
+	    
         stage('job1'){
 		agent {
 			label "build"
@@ -28,8 +29,7 @@ pipeline {
            deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
 				}
 			}
-		
-			
+
 	stage('job2'){
 		agent {
 			label "quality"
@@ -43,7 +43,7 @@ pipeline {
             } 
         }		
 
-			
+    }		
 }
 
 		
