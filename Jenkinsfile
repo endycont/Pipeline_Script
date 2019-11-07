@@ -17,6 +17,7 @@ pipeline {
                 git 'https://github.com/endycont/Spring3MVC.git'
                 bat label: '', script: 'mvn -B clean package'
                 archiveArtifacts '**/*.war'
+		echo "guardado war"
             }
         }
 			
@@ -25,6 +26,7 @@ pipeline {
 					label "deploy"
 				}
 				steps {
+					echo"copia"
 					 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '$JOB_NAME', selector: lastSuccessful()
            deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
 				}
