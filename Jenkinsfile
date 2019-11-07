@@ -15,7 +15,7 @@ pipeline {
 		}
             steps {
                 git 'https://github.com/endycont/Spring3MVC.git'
-                bat label: '', script: 'mvn -B clean compile'
+                bat label: '', script: 'mvn -B clean package'
                 archiveArtifacts '**/*.war'
             }
         }
