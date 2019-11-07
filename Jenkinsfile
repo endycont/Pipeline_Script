@@ -29,7 +29,7 @@ pipeline {
 					echo "copia"
 					echo "$JOB_NAME'"
 					echo '$JOB_NAME'
-					 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '$JOB_NAME', selector: lastSuccessful()
+					 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '$JOB_NAME', selector:  lastWithArtifacts()
            deploy adapters: [tomcat8(credentialsId: 'e75e8263-1318-412f-b78c-126095424d06', path: '', url: 'http://localhost:8081')], contextPath: null, war: '**/*.war'
 				}
 			}
