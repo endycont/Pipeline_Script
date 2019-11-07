@@ -18,6 +18,8 @@ pipeline {
                 archiveArtifacts '**/*.war'
             }
         }
+		}
+	
 	stage('job3') {
 				agent {
 					label "deploy"
